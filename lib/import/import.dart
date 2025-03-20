@@ -1,3 +1,6 @@
+// Shared Preference
+export 'package:shared_preferences/shared_preferences.dart';
+
 // Pages
 export '../pages/home_page.dart';
 export '../pages/login_page.dart';
@@ -12,3 +15,4 @@ export '../pages/home/stopwatch_page.dart';
 export '../pages/home/tracling_lbs_page.dart';
 
 // Component
+export '../components/list_home.dart';

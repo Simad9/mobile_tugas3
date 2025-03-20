@@ -13,11 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mobile Tugas 3',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        fontFamily: 'Poppins', 
+        fontFamily: 'Poppins',
       ),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

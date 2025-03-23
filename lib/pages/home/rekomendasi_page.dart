@@ -5,6 +5,11 @@ class RekomendasiPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+     return Scaffold(
+      appBar: AppBar(
+        title: Text("Rekomendasi Page"),
+      ),
+      body: Text("Rekomendasi Page "),
+    );
   }
 }

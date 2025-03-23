@@ -5,6 +5,11 @@ class KonversiWaktuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Konversi Waktu Page"),
+      ),
+      body: Text("Konversi Waktu Page "),
+    );
   }
 }

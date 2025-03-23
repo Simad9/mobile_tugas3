@@ -12,7 +12,7 @@ export '../pages/home/bilangan_page.dart';
 export '../pages/home/konversi_waktu_page.dart';
 export '../pages/home/rekomendasi_page.dart';
 export '../pages/home/stopwatch_page.dart';
-export '../pages/home/tracling_lbs_page.dart';
+export '../pages/home/tracking_lbs_page.dart';
 
 // Component
 export '../components/list_home.dart';

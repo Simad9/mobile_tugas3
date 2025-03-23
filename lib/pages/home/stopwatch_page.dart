@@ -7,9 +7,9 @@ class StopwatchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Stopwatch"),
+        title: Text("Stopwatch Page"),
       ),
-      body: Text("Stopwatch "),
+      body: Text("Stopwatch Page "),
     );
   }
 }

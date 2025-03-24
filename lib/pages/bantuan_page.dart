@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../import/import.dart';
+import '../model/bantuan_model.dart';
 
 class BantuanPage extends StatefulWidget {
   const BantuanPage({super.key});
@@ -9,14 +10,15 @@ class BantuanPage extends StatefulWidget {
 }
 
 class _BantuanPageState extends State<BantuanPage> {
-  Future<void> logout() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove('session_token'); // Hapus session token
+  Future<void> _logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('session_token');
     if (mounted) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => LoginPage()), // Arahkan ke halaman login
+          builder: (context) => const LoginPage(),
+        ),
       );
     }
   }
@@ -25,20 +27,43 @@ class _BantuanPageState extends State<BantuanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Bantuan Page"),
+        title: const Text("Bantuan Page"),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
-            onPressed: () => logout(),
+            icon: const Icon(Icons.logout),
+            onPressed: _logout,
           ),
         ],
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(8),
-          child: Text("Test"),
+          padding: const EdgeInsets.all(8),
+          child: Expanded(
+            child: ListView.builder(
+              itemCount: itemList.length,
+              itemBuilder: (context, index) {
+                final item = itemList[index];
+                return ExpansionTile(
+                  title: Text(item.judul),
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 4,
+                      ),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(item.deskripsi),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
         ),
       ),
     );
   }
 }
+

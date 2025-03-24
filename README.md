@@ -13,3 +13,6 @@ Anggota Pada Kelompok ini :
 ## Soal
 
 Soal dapat diakses pada folder [`soal/Soal_Mobile_Tugas3.png`](soal/Soal_Mobile_Tugas3.png)
+
+## Pembagian Tugas
+Pembagian tugas ada di file ini : [`pembagian_tugas.md`](soal/pembagian_tugas.md)

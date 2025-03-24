@@ -43,7 +43,7 @@ class _ListHomeState extends State<ListHome> {
             _menuList(context, "Stopwatch", Icons.timer, StopwatchPage()),
             _menuList(context, "Jenis Bilangan", Icons.numbers, BilanganPage()),
             _menuList(
-                context, "Tracking LBS", Icons.analytics, TrackingLbsPage()),
+                context, "Tracking LBS (Location-Based Service)", Icons.analytics, TrackingLbsPage()),
             _menuList(context, "Konversi Waktu", Icons.av_timer_outlined,
                 KonversiWaktuPage()),
             _menuList(context, "Rekomenadisasi", Icons.favorite, RekomendasiPage()),

@@ -2,8 +2,8 @@
 ### Wijdan :
 - [x] Login Page
 - [x] Home Page
-- [ ] Bantuan Page
-- [ ] Daftar Anggota Page
+- [x] Bantuan Page
+- [x] Daftar Anggota Page
 
 ### Aqsha :
 - [ ] Bilangan_page

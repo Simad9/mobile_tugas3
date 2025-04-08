@@ -1,0 +1,2 @@
+D:/AAAAAAAAAAAAA SEM 6/Mobile/mobile_tugas3/android/app/.cxx/Debug/6m3cp4k4/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/AAAAAAAAAAAAA SEM 6/Mobile/mobile_tugas3/android/app/.cxx/Debug/6m3cp4k4/armeabi-v7a/CMakeFiles/rebuild_cache.dir

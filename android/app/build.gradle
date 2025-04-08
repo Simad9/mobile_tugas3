@@ -5,6 +5,16 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def mapsApiKey = localProperties.getProperty('maps.api.key') ?: "YOUR_API_KEY_PLACEHOLDER"
+
 android {
     namespace = "com.example.mobile_tugas3"
     compileSdk = flutter.compileSdkVersion
@@ -38,6 +48,17 @@ android {
         }
     }
 }
+
+task replaceApiKey {
+    doLast {
+        def apiKeysFile = file("$projectDir/src/main/res/values/strings.xml")
+        def content = apiKeysFile.getText('UTF-8')
+        content = content.replaceAll("YOUR_API_KEY_PLACEHOLDER", mapsApiKey)
+        apiKeysFile.write(content, 'UTF-8')
+    }
+}
+
+preBuild.dependsOn replaceApiKey
 
 flutter {
     source = "../.."

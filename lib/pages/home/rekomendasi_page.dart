@@ -147,13 +147,11 @@ class _EduWebListPageState extends State<EduWebListPage> {
                 onPressed: () async {
                   final url = Uri.parse(webDetail.siteUrl);
                   if (await canLaunchUrl(url)) {
-                    await launchUrl(url);
+                    await launchUrl(url, mode: LaunchMode.externalApplication);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Gagal membuka situs'),
-                      ),
-                    );
+                        const SnackBar(content: Text('Gagal membuka situs')),
+                        );
                   }
                 },
                 icon: const Icon(Icons.public),

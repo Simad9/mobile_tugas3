@@ -16,3 +16,12 @@ Soal dapat diakses pada folder [`soal/Soal_Mobile_Tugas3.png`](soal/Soal_Mobile_
 
 ## Pembagian Tugas
 Pembagian tugas ada di file ini : [`pembagian_tugas.md`](soal/pembagian_tugas.md)
+
+## Setup API Keys
+Untuk menggunakan aplikasi ini:
+
+1. Copy file `android/local.properties.example` menjadi `android/local.properties`
+2. Edit `local.properties` dan isi nilai `maps.api.key=` dengan Google Maps API Key Anda
+3. Build aplikasi dengan perintah `flutter build apk` atau jalankan dengan `flutter run`
+
+Catatan: File `local.properties` tidak akan diupload ke repository karena sudah ditambahkan ke .gitignore

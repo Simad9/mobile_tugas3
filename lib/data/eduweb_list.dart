@@ -48,7 +48,7 @@ List<EduWebModel> recommendedWebsites = [
     topics: ['Waktu', 'Panjang', 'Berat', 'Suhu'],
     rating: 4.3,
     description: 'Untuk konversi satuan seperti panjang, berat, suhu, dll.',
-    logoUrl: 'assets/images/converters.png',
+    logoUrl: 'https://drive.google.com/uc?export=view&id=10_f4UUSPeO71gOv9pN3PRM5iD5a90HzY',
     siteUrl: 'https://www.unitconverters.net/',
   ),
 
@@ -59,7 +59,7 @@ List<EduWebModel> recommendedWebsites = [
     topics: ['Filosofi', 'Sains', 'Pemikiran Kritis'],
     rating: 4.8,
     description: 'Animasi dan video edukatif yang menarik dan mendorong pemikiran.',
-    logoUrl: 'assets/images/TEDed_logo.jpg',
+    logoUrl: 'https://drive.google.com/uc?export=view&id=1_kYNntx2pFFG4nYpQnjRaLP0tqITlQ38',
     siteUrl: 'https://ed.ted.com/',
   ),
   EduWebModel(
@@ -69,7 +69,7 @@ List<EduWebModel> recommendedWebsites = [
     topics: ['Aritmatika', 'Aljabar', 'Game Edukasi'],
     rating: 4.4,
     description: 'Matematika untuk anak-anak dengan permainan seru.',
-    logoUrl: 'assets/images/logo2.jpg',
+    logoUrl: 'https://drive.google.com/uc?export=view&id=1p2ZMxPsKpfHjkQQGeOaDGci5ysdT12Cy',
     siteUrl: 'https://www.coolmath4kids.com',
   ),
   EduWebModel(
@@ -99,7 +99,7 @@ List<EduWebModel> recommendedWebsites = [
     topics: ['Sains', 'Teknologi', 'Budaya Pop', 'Kesehatan'],
     rating: 4.3,
     description: 'Jelaskan cara kerja teknologi dan konsep sehari-hari dengan gaya ringan.',
-    logoUrl: 'assets/images/1958758.png',
+    logoUrl: 'https://drive.google.com/uc?export=view&id=1YceYFvL3AlpsYgxuAY666W2XA-PCYxvw',
     siteUrl: 'https://www.howstuffworks.com/',
   ),
   EduWebModel(

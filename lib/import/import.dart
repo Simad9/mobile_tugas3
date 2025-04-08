@@ -13,6 +13,13 @@ export '../pages/home/konversi_waktu_page.dart';
 export '../pages/home/rekomendasi_page.dart';
 export '../pages/home/stopwatch_page.dart';
 export '../pages/home/tracking_lbs_page.dart';
+export '../pages/home/rekomendasi_detail.page.dart';
 
 // Component
 export '../components/list_home.dart';
+
+//data
+export 'package:mobile_tugas3/data/eduweb_list.dart';
+
+//model
+export 'package:mobile_tugas3/model/eduweb_model.dart';

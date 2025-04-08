@@ -46,7 +46,7 @@ class _ListHomeState extends State<ListHome> {
                 context, "Tracking LBS (Location-Based Service)", Icons.analytics, TrackingLbsPage()),
             _menuList(context, "Konversi Waktu", Icons.av_timer_outlined,
                 KonversiWaktuPage()),
-            _menuList(context, "Rekomenadisasi", Icons.favorite, RekomendasiPage()),
+            _menuList(context, "Rekomendasi", Icons.favorite, EduWebListPage()),
           ],
         ),
       ),

@@ -10,6 +10,6 @@
 - [ ] Tracking lbs_page
 
 ### Rani :
-- [ ] Stopwatch
-- [ ] Rekomendasi
-- [ ] Konversi waktu
+- [x] Stopwatch
+- [x] Rekomendasi
+- [x] Konversi waktu

@@ -29,32 +29,32 @@ Catatan: File `local.properties` tidak akan diupload ke repository karena sudah 
 ## Screenshot Aplikasi
 
 ### Login Page
-![Login](screenshots/login.jpg)
+![Login](assets/screenshots/login.jpg)
 
 ### Home Page
-![Home](screenshots/home_page.jpg)
+![Home](assets/screenshots/home_page.jpg)
 
 ### Anggota Page
-![Anggota](screenshots/anggota_page.jpg)
+![Anggota](assets/screenshots/anggota_page.jpg)
 
 ### Jenis Bilangan Page
-![Jenis Bilangan](screenshots/jenis_bilangan.jpg)
+![Jenis Bilangan](assets/screenshots/jenis_bilangan.jpg)
 
 ### Konversi Waktu Page
-![Konversi Waktu](screenshots/konversi_waktu.jpg)
+![Konversi Waktu](assets/screenshots/konversi_waktu.jpg)
 
 ### Stopwatch Page
-![Stopwatch](screenshots/stopwatch.jpg)
+![Stopwatch](assets/screenshots/stopwatch.jpg)
 
 ### Tracking LBS Page
-![Tracking LBS](screenshots/lbs_track.jpg)
+![Tracking LBS](assets/screenshots/lbs_track.jpg)
 
 ### Detail Rekomendasi Page
-![Detail Rekomendasi](screenshots/detail_rekomendasi.jpg)
+![Detail Rekomendasi](assets/screenshots/detail_rekomendasi.jpg)
 
 ### Rekomendasi Web Page
-![Rekomendasi Web](screenshots/rekomendasi_web.jpg)
+![Rekomendasi Web](assets/screenshots/rekomendasi_web.jpg)
 
 ### Bantuan Page
-![Bantuan](screenshots/bantuan_page.jpg)
+![Bantuan](assets/screenshots/bantuan_page.jpg)
 

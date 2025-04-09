@@ -24,14 +24,18 @@ class _EduWebListPageState extends State<EduWebListPage> {
     for (var web in websites) {
       map.putIfAbsent(web.category, () => []).add(web);
     }
-    return SplayTreeMap.from(map); // sort by key (category name)
+    return SplayTreeMap.from(map); // Sort berdasarkan kategori
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Rekomendasi Website Edukasi'),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: ListView(
@@ -39,15 +43,14 @@ class _EduWebListPageState extends State<EduWebListPage> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Judul kategori
+                // Judul Kategori
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Text(
                     entry.key,
-                    style: const TextStyle(
-                      fontSize: 18,
+                    style: theme.textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent,
+                      color: colorScheme.primary,
                     ),
                   ),
                 ),
@@ -60,7 +63,10 @@ class _EduWebListPageState extends State<EduWebListPage> {
     );
   }
 
-  Widget eduWebContainer(EduWebModel webDetail, context) {
+  Widget eduWebContainer(EduWebModel webDetail, BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -74,9 +80,9 @@ class _EduWebListPageState extends State<EduWebListPage> {
         margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(8),
-          color: Colors.white,
+          border: Border.all(color: colorScheme.outline.withOpacity(0.3)),
+          borderRadius: BorderRadius.circular(10),
+          color: colorScheme.surface,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +97,7 @@ class _EduWebListPageState extends State<EduWebListPage> {
                     height: 80,
                     fit: BoxFit.contain,
                     errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.public, size: 80),
+                      const Icon(Icons.public, size: 80, color: Colors.black),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -101,25 +107,27 @@ class _EduWebListPageState extends State<EduWebListPage> {
                     children: [
                       Text(
                         webDetail.name,
-                        style: const TextStyle(
-                          fontSize: 16,
+                        style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         webDetail.category,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          fontStyle: FontStyle.italic,
+                          color: colorScheme.secondary,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Row(
                         children: [
-                          const Icon(Icons.star,
-                              color: Colors.yellow, size: 18),
-                          Text(webDetail.rating.toString()),
+                          Icon(Icons.star, color: Colors.amber, size: 18),
+                          const SizedBox(width: 4),
+                          Text(
+                            webDetail.rating.toString(),
+                            style: theme.textTheme.bodySmall,
+                          ),
                         ],
                       ),
                     ],
@@ -135,7 +143,9 @@ class _EduWebListPageState extends State<EduWebListPage> {
                     webDetail.isFavorite
                         ? Icons.favorite
                         : Icons.favorite_border,
-                    color: webDetail.isFavorite ? Colors.red : Colors.grey,
+                    color: webDetail.isFavorite
+                        ? Colors.red
+                        : colorScheme.onSurface.withOpacity(0.4),
                   ),
                 ),
               ],
@@ -150,15 +160,20 @@ class _EduWebListPageState extends State<EduWebListPage> {
                     await launchUrl(url, mode: LaunchMode.externalApplication);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Gagal membuka situs')),
-                        );
+                      const SnackBar(content: Text('Gagal membuka situs')),
+                    );
                   }
                 },
-                icon: const Icon(Icons.public),
-                label: const Text("Go to Website"),
+                icon: const Icon(Icons.public, color: Colors.black),
+                label: const Text("Kunjungi Situs"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
+                  backgroundColor: colorScheme.primary,
+                  foregroundColor: colorScheme.onPrimary,
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
               ),
             ),

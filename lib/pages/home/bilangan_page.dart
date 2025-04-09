@@ -97,6 +97,7 @@ class _BilanganPageState extends State<BilanganPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Jenis Bilangan'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(

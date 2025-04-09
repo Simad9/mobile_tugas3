@@ -5,7 +5,7 @@ class KonversiWaktuPage extends StatefulWidget {
   const KonversiWaktuPage({super.key});
 
   @override
-  _KonversiWaktuPageState createState() => _KonversiWaktuPageState();
+  State<KonversiWaktuPage> createState() => _KonversiWaktuPageState();
 }
 
 class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
@@ -16,18 +16,16 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
   void _convertFromYears() {
     double? years = double.tryParse(_yearController.text);
     if (years == null) {
-      setState(() {
-        _result = "Masukkan angka yang valid";
-      });
+      setState(() => _result = "Masukkan angka yang valid");
       return;
     }
 
-    double months = years * 12;
-    double weeks = years * 52.1429;
-    double days = years * 365;
-    double hours = days * 24;
-    double minutes = hours * 60;
-    double seconds = minutes * 60;
+    final months = years * 12;
+    final weeks = years * 52.1429;
+    final days = years * 365;
+    final hours = days * 24;
+    final minutes = hours * 60;
+    final seconds = minutes * 60;
 
     setState(() {
       _result = "${years.toStringAsFixed(2)} tahun =\n"
@@ -42,21 +40,20 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
 
   void _convertFromDate() {
     if (_selectedDate == null) {
-      setState(() {
-        _result = "Pilih tanggal terlebih dahulu";
-      });
+      setState(() => _result = "Pilih tanggal terlebih dahulu");
       return;
     }
 
-    DateTime now = DateTime.now();
-    Duration difference = now.difference(_selectedDate!);
-    double years = difference.inDays / 365.25;
-    double months = difference.inDays / 30.44;
-    double weeks = difference.inDays / 7;
-    double days = difference.inDays.toDouble();
-    double hours = difference.inHours.toDouble();
-    double minutes = difference.inMinutes.toDouble();
-    double seconds = difference.inSeconds.toDouble();
+    final now = DateTime.now();
+    final difference = now.difference(_selectedDate!);
+
+    final years = difference.inDays / 365.25;
+    final months = difference.inDays / 30.44;
+    final weeks = difference.inDays / 7;
+    final days = difference.inDays.toDouble();
+    final hours = difference.inHours.toDouble();
+    final minutes = difference.inMinutes.toDouble();
+    final seconds = difference.inSeconds.toDouble();
 
     setState(() {
       _result = "Dari ${DateFormat('dd MMMM yyyy').format(_selectedDate!)} hingga hari ini =\n"
@@ -71,16 +68,15 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
   }
 
   Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
+    final picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(1900),
       lastDate: DateTime.now(),
     );
+
     if (picked != null && picked != _selectedDate) {
-      setState(() {
-        _selectedDate = picked;
-      });
+      setState(() => _selectedDate = picked);
     }
   }
 
@@ -96,6 +92,7 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // Input Tahun
             TextField(
               controller: _yearController,
               keyboardType: TextInputType.number,
@@ -107,6 +104,8 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
               ),
             ),
             const SizedBox(height: 12),
+
+            // Tombol Konversi Tahun
             ElevatedButton(
               onPressed: _convertFromYears,
               style: ElevatedButton.styleFrom(
@@ -118,30 +117,44 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
               child: const Text("Konversi dari Tahun"),
             ),
             const SizedBox(height: 24),
+
+            // Pilih Tanggal
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Pilih Tanggal:", style: TextStyle(fontSize: 16)),
-                ElevatedButton.icon(
+                // Pilih Tanggal
+                Text(
+                  "Pilih Tanggal:",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                const SizedBox(height: 8),
+                OutlinedButton.icon(
                   onPressed: () => _selectDate(context),
-                  icon: const Icon(Icons.calendar_today),
-                  label: const Text("Pilih"),
-                  style: ElevatedButton.styleFrom(
+                  icon: const Icon(Icons.calendar_month_outlined, size: 20),
+                  label: const Text("Pilih Tanggal"),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                    side: BorderSide(color: Theme.of(context).primaryColor),
+                    foregroundColor: Theme.of(context).primaryColor,
                   ),
                 ),
               ],
             ),
-            if (_selectedDate != null) ...[
-              const SizedBox(height: 8),
+            const SizedBox(height: 8),
+
+            // Tanggal yang Dipilih
+            if (_selectedDate != null)
               Text(
                 "Tanggal dipilih: ${DateFormat('dd MMMM yyyy').format(_selectedDate!)}",
                 style: const TextStyle(fontStyle: FontStyle.italic),
               ),
-            ],
+
             const SizedBox(height: 12),
+
+            // Tombol Konversi Tanggal
             ElevatedButton(
               onPressed: _convertFromDate,
               style: ElevatedButton.styleFrom(
@@ -153,6 +166,8 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
               child: const Text("Konversi dari Tanggal"),
             ),
             const SizedBox(height: 30),
+
+            // Hasil Konversi
             if (_result.isNotEmpty)
               Container(
                 width: double.infinity,

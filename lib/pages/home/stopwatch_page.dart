@@ -44,19 +44,21 @@ class _StopwatchPageState extends State<StopwatchPage> {
 
   void _recordLap() {
     setState(() {
-      _lapTimes.insert(0, _stopwatch.elapsed); // Simpan total waktu
+      _lapTimes.insert(0, _stopwatch.elapsed);
     });
   }
 
   String _formatDuration(Duration d) {
     final minutes = d.inMinutes.remainder(60).toString().padLeft(2, '0');
     final seconds = d.inSeconds.remainder(60).toString().padLeft(2, '0');
-    final milliseconds = (d.inMilliseconds.remainder(1000) ~/ 10).toString().padLeft(2, '0');
+    final milliseconds =
+    (d.inMilliseconds.remainder(1000) ~/ 10).toString().padLeft(2, '0');
     return "$minutes:$seconds:$milliseconds";
   }
 
   @override
   Widget build(BuildContext context) {
+    final greenMain = Color(0xFF4CAF50); // hijau yang lebih hidup
     final progress = (_stopwatch.elapsed.inMilliseconds % 60000) / 60000;
 
     return Scaffold(
@@ -72,21 +74,42 @@ class _StopwatchPageState extends State<StopwatchPage> {
             Stack(
               alignment: Alignment.center,
               children: [
-                SizedBox(
-                  width: 200,
-                  height: 200,
+                Container(
+                  width: 220,
+                  height: 220,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [greenMain.withOpacity(0.8), greenMain],
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: greenMain.withOpacity(0.5),
+                        blurRadius: 12,
+                        offset: Offset(0, 6),
+                      ),
+                    ],
+                  ),
                   child: CircularProgressIndicator(
                     value: progress,
                     strokeWidth: 8,
-                    color: Colors.deepPurpleAccent,
-                    backgroundColor: Colors.black12,
+                    backgroundColor: Colors.white,
+                    color: Colors.white,
                   ),
                 ),
                 Text(
                   _formatDuration(_stopwatch.elapsed),
                   style: const TextStyle(
-                    fontSize: 40,
+                    fontSize: 38,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 4,
+                        color: Colors.black45,
+                        offset: Offset(1, 2),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -96,10 +119,10 @@ class _StopwatchPageState extends State<StopwatchPage> {
 
             // Icon Button: Start/Stop toggle
             IconButton(
-              iconSize: 60,
+              iconSize: 70,
               icon: Icon(
                 _stopwatch.isRunning ? Icons.pause_circle : Icons.play_circle,
-                color: _stopwatch.isRunning ? Colors.redAccent : Colors.purple,
+                color: _stopwatch.isRunning ? Colors.redAccent : greenMain,
               ),
               onPressed: _toggleStopwatch,
             ),
@@ -114,13 +137,29 @@ class _StopwatchPageState extends State<StopwatchPage> {
                   onPressed: _resetStopwatch,
                   icon: const Icon(Icons.replay),
                   label: const Text("Reset"),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
                 ),
                 ElevatedButton.icon(
                   onPressed: _recordLap,
                   icon: const Icon(Icons.flag),
                   label: const Text("Lap"),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green.shade700,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -130,7 +169,12 @@ class _StopwatchPageState extends State<StopwatchPage> {
             // Lap List
             Expanded(
               child: _lapTimes.isEmpty
-                  ? const Center(child: Text("Belum ada lap."))
+                  ? const Center(
+                child: Text(
+                  "Belum ada lap.",
+                  style: TextStyle(fontSize: 16),
+                ),
+              )
                   : ListView.builder(
                 itemCount: _lapTimes.length,
                 itemBuilder: (context, index) {
@@ -141,13 +185,24 @@ class _StopwatchPageState extends State<StopwatchPage> {
                       : Duration.zero;
                   final lapDuration = currentLap - previousLap;
 
-                  return ListTile(
-                    leading: Text(
-                      "Lap $lapIndex",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                  return Card(
+                    color: Colors.green.shade50,
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    title: Text("Lap Time: ${_formatDuration(lapDuration)}"),
-                    trailing: Text(_formatDuration(currentLap)),
+                    margin: const EdgeInsets.symmetric(vertical: 6),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: greenMain,
+                        child: Text(
+                          "$lapIndex",
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      title: Text("Lap Time: ${_formatDuration(lapDuration)}"),
+                      trailing: Text(_formatDuration(currentLap)),
+                    ),
                   );
                 },
               ),

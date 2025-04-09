@@ -25,3 +25,29 @@ Untuk menggunakan aplikasi ini:
 3. Build aplikasi dengan perintah `flutter build apk` atau jalankan dengan `flutter run`
 
 Catatan: File `local.properties` tidak akan diupload ke repository karena sudah ditambahkan ke .gitignore
+
+## Screenshot Aplikasi
+
+<p align="center">
+  <img src="assets/screenshots/login.jpg" width="250"/>
+  <img src="assets/screenshots/home_page.jpg" width="250"/>
+  <img src="assets/screenshots/anggota_page.jpg" width="250"/>
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/jenis_bilangan.jpg" width="250"/>
+  <img src="assets/screenshots/konversi_waktu.jpg" width="250"/>
+  <img src="assets/screenshots/stopwatch.jpg" width="250"/>
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/lbs_track.jpg" width="250"/>
+  <img src="assets/screenshots/detail_rekomendasi.jpg" width="250"/>
+  <img src="assets/screenshots/rekomendasi_web.jpg" width="250"/>
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/bantuan_page.jpg" width="250"/>
+</p>
+
+

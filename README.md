@@ -28,33 +28,26 @@ Catatan: File `local.properties` tidak akan diupload ke repository karena sudah 
 
 ## Screenshot Aplikasi
 
-### Login Page
-![Login](assets/screenshots/login.jpg)
+<p align="center">
+  <img src="assets/screenshots/login.jpg" width="250"/>
+  <img src="assets/screenshots/home_page.jpg" width="250"/>
+  <img src="assets/screenshots/anggota_page.jpg" width="250"/>
+</p>
 
-### Home Page
-![Home](assets/screenshots/home_page.jpg)
+<p align="center">
+  <img src="assets/screenshots/jenis_bilangan.jpg" width="250"/>
+  <img src="assets/screenshots/konversi_waktu.jpg" width="250"/>
+  <img src="assets/screenshots/stopwatch.jpg" width="250"/>
+</p>
 
-### Anggota Page
-![Anggota](assets/screenshots/anggota_page.jpg)
+<p align="center">
+  <img src="assets/screenshots/lbs_track.jpg" width="250"/>
+  <img src="assets/screenshots/detail_rekomendasi.jpg" width="250"/>
+  <img src="assets/screenshots/rekomendasi_web.jpg" width="250"/>
+</p>
 
-### Jenis Bilangan Page
-![Jenis Bilangan](assets/screenshots/jenis_bilangan.jpg)
+<p align="center">
+  <img src="assets/screenshots/bantuan_page.jpg" width="250"/>
+</p>
 
-### Konversi Waktu Page
-![Konversi Waktu](assets/screenshots/konversi_waktu.jpg)
-
-### Stopwatch Page
-![Stopwatch](assets/screenshots/stopwatch.jpg)
-
-### Tracking LBS Page
-![Tracking LBS](assets/screenshots/lbs_track.jpg)
-
-### Detail Rekomendasi Page
-![Detail Rekomendasi](assets/screenshots/detail_rekomendasi.jpg)
-
-### Rekomendasi Web Page
-![Rekomendasi Web](assets/screenshots/rekomendasi_web.jpg)
-
-### Bantuan Page
-![Bantuan](assets/screenshots/bantuan_page.jpg)
 

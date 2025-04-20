@@ -10,8 +10,30 @@ class EduWebDetailPage extends StatefulWidget {
   @override
   State<EduWebDetailPage> createState() => _EduWebDetailPageState();
 }
-
 class _EduWebDetailPageState extends State<EduWebDetailPage> {
+  late bool isFavorite;
+
+  @override
+  void initState() {
+    super.initState();
+    isFavorite = widget.eduWebDetail.isFavorite;
+  }
+
+  void toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+      widget.eduWebDetail.isFavorite = isFavorite;
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(isFavorite
+            ? 'Ditambahkan ke favorit'
+            : 'Dihapus dari favorit'),
+        duration: const Duration(seconds: 1),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final web = widget.eduWebDetail;
@@ -19,6 +41,15 @@ class _EduWebDetailPageState extends State<EduWebDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(web.name),
+        actions: [
+          IconButton(
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: isFavorite ? Colors.red : Colors.grey,
+            ),
+            onPressed: toggleFavorite,
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -54,13 +85,10 @@ class _EduWebDetailPageState extends State<EduWebDetailPage> {
                     const SizedBox(height: 12),
                     Text(
                       web.description,
-                      style: const TextStyle(
-                        fontSize: 14,
-                      ),
+                      style: const TextStyle(fontSize: 14),
                     ),
                     const SizedBox(height: 16),
 
-                    // Tampilkan Topik jika ada
                     if (web.topics != null && web.topics.isNotEmpty) ...[
                       const Text(
                         'Topik yang Tersedia:',
@@ -97,7 +125,6 @@ class _EduWebDetailPageState extends State<EduWebDetailPage> {
                         ),
                       ],
                     ),
-
                     const SizedBox(height: 16),
                     Center(
                       child: InkWell(

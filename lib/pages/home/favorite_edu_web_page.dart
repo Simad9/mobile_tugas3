@@ -1,96 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_tugas3/import/import.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:collection';
 
-import 'favorite_edu_web_page.dart';
-
-
-class EduWebListPage extends StatefulWidget {
-  const EduWebListPage({super.key});
+class FavoriteEduWebPage extends StatefulWidget {
+  const FavoriteEduWebPage({super.key});
 
   @override
-  State<EduWebListPage> createState() => _EduWebListPageState();
+  State<FavoriteEduWebPage> createState() => _FavoriteEduWebPageState();
 }
 
-class _EduWebListPageState extends State<EduWebListPage> {
-  late Map<String, List<EduWebModel>> groupedWebsites;
-
-  @override
-  void initState() {
-    super.initState();
-    groupedWebsites = _groupByCategory(recommendedWebsites);
-  }
-
-  Map<String, List<EduWebModel>> _groupByCategory(List<EduWebModel> websites) {
-    Map<String, List<EduWebModel>> map = {};
-    for (var web in websites) {
-      map.putIfAbsent(web.category, () => []).add(web);
-    }
-    return SplayTreeMap.from(map); // Sort berdasarkan kategori
-  }
-
+class _FavoriteEduWebPageState extends State<FavoriteEduWebPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
+    // Filter hanya yang difavoritkan
+    final favoriteWebsites =
+    recommendedWebsites.where((web) => web.isFavorite).toList();
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Rekomendasi Website Edukasi'),
+        title: const Text('Website Favorit'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite),
-            onPressed: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const FavoriteEduWebPage()),
-              );
-              setState(() {}); // Refresh saat kembali dari Favorite
-            },
-          ),
-        ],
       ),
-      body: SafeArea(
-        child: ListView(
-          children: groupedWebsites.entries.map((entry) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Judul Kategori
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Text(
-                    entry.key,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: colorScheme.primary,
-                    ),
-                  ),
-                ),
-                ...entry.value.map((web) => eduWebContainer(web, context)),
-              ],
-            );
-          }).toList(),
-        ),
+      body: favoriteWebsites.isEmpty
+          ? const Center(
+        child: Text("Belum ada website yang difavoritkan."),
+      )
+          : ListView.builder(
+        itemCount: favoriteWebsites.length,
+        itemBuilder: (context, index) {
+          final web = favoriteWebsites[index];
+          return _eduWebContainer(web, context);
+        },
       ),
     );
   }
 
-  Widget eduWebContainer(EduWebModel webDetail, BuildContext context) {
+  Widget _eduWebContainer(EduWebModel webDetail, BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
     return InkWell(
-      onTap: () async {
-        await Navigator.push(
+      onTap: () {
+        Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => EduWebDetailPage(eduWebDetail: webDetail),
           ),
         );
-        setState(() {}); // Refresh saat kembali dari Detail
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -138,7 +97,7 @@ class _EduWebListPageState extends State<EduWebListPage> {
                       const SizedBox(height: 4),
                       Row(
                         children: [
-                          Icon(Icons.star, color: Colors.amber, size: 18),
+                          const Icon(Icons.star, color: Colors.amber, size: 18),
                           const SizedBox(width: 4),
                           Text(
                             webDetail.rating.toString(),
@@ -185,8 +144,8 @@ class _EduWebListPageState extends State<EduWebListPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: colorScheme.primary,
                   foregroundColor: colorScheme.onPrimary,
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16, vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

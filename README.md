@@ -47,6 +47,7 @@ Catatan: File `local.properties` tidak akan diupload ke repository karena sudah 
 </p>
 
 <p align="center">
+  <img src="assets/screenshots/rekomendasi_favorit.jpg" width="250"/>
   <img src="assets/screenshots/bantuan_page.jpg" width="250"/>
 </p>
 
